@@ -1,0 +1,308 @@
+
+body
+{	
+  background-image: url("back2.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+}
+h1
+{	
+  font-family:'Lobster', cursive;
+   cursive;
+  font-size: 55px;
+  color: #282828;
+  background-color: white;
+  position: center;
+    width: 40%;
+  
+}
+
+h2
+{	font-family: 'Yanone Kaffeesatz', sans-serif;
+	color: 	#404040 ;
+	font-size: 30px;
+}
+
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+    margin-left: 250px;
+}
+
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: #73C6B6;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 15px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+  -webkit-border-radius: 10px;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: #73C6B6;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+input
+{	
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background:#DBD8D8 ;
+  width: 20%;
+  border: 0;
+  margin: 0 0 2px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  -webkit-border-radius: 10px;
+}
+#in
+{
+	background: #282828;
+	  padding: 25px;
+	color: white;
+	  
+}
+#i
+{
+	font-size: 17px;
+	 position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #73C6B6; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+}
+
+p
+{	font-family: monospace;
+	font-size: 20px;
+	color: #3e2f3e;
+	background-color: white;
+	width: 30%;
+	
+}
+a
+{
+	color: #282828;	
+
+}
+
+
+.round img
+{			position: relative;
+			align: center;
+			display:block;
+            width: 100px;
+            height: 100px;
+            border-radius: 90%;
+            overflow: hidden;
+            padding:5px 4px;
+}
+
+
+input#first
+{
+	
+	background-image: url("user.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+	
+}
+
+input#Barcode
+{
+	
+
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+	
+}
+
+
+
+input#Category
+{
+	
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+	
+}
+
+
+#select
+{
+	
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+	
+}
+input#Name
+{
+	
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+	
+}
+
+input#last
+{
+	background-image: url("images/user.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+		
+}
+input#user
+{
+	
+	background-image: url("images/user.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+	
+}
+
+input#email
+{
+	background-image: url("images/email.jpg");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+}
+
+input#password, input#confirmpass
+{
+	background-image: url("images/lock.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+}
+input#DOB
+{
+	background-image: url("images/Calendar.jpg");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+}
+input#contact
+{
+	background-image: url("images/telephone.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 30px;
+	
+}
+
+.menu
+{
+	overflow: hidden;
+  	background-color: #333;
+  	position: fixed;
+  	top: 0;
+  	width: 100%;
+}
+
+.menu a
+{
+	float: right;
+  	display: block;
+  	color: #f2f2f2;
+  	text-align: center;
+  	padding: 10px 16px;
+  	text-decoration: none;
+  	font-size: 17px;
+  	font-family:"Times New Roman", Georgia, Serif;
+}
+
+
+

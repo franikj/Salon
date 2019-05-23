@@ -1,0 +1,10 @@
+INDEX VERSION 1.3+J:\level4\kkkkk\apache-tomcat-9.0.13\webapps\course\Login-Registration_Form-master\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2390402370.index
+716764998.index
+1595694945.index
+667589799.index
+1398979794.index
+1432575698.index
+503281157.index
+217362337.index
+3703417998.index
