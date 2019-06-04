@@ -31,7 +31,7 @@ rss = stt.executeQuery("select Name From Sales.Products") ;
 	<div class="container">
 		<div class="custom-select">
 		<label>Product</label>
-		<select name="Name" class="custom-select">
+		<select name="item" class="custom-select">
         <%  while(rss.next()){ %>
             <option><%= rss.getString(1)%></option>
         <% } %>
@@ -40,18 +40,14 @@ rss = stt.executeQuery("select Name From Sales.Products") ;
 	
 	<div class="form-group" style="wigth: 80%;">
 		<label>Amount</label>
-		<input type="number" class="form-control" required name="ProductID" />
-	</div>
-	<div class="form-group" style="wigth: 80%;">
-		<label>Price</label>
-		<input type="text" class="form-control" required name="Name" />
+		<input type="number" class="form-control" required name="Number" />
 	</div>
 	<button type="submit" class="btn btn-primary"> Ok</button>
 	<a href="../sales" class="btn btn-default">Back</a>
 	</div>
 </form>
 <% 
-                String s=request.getParameter("Name");
+                String s=request.getParameter("item");
                 if (s !=null)
                 {
                     out.println("Selected  : "+s);
@@ -140,34 +136,33 @@ document.addEventListener("click", closeAllSelect);
 
 <%
 
-String c = request.getParameter("Name");
+String c = request.getParameter("item");
 String d = request.getParameter("Number");
-String e = request.getParameter("Price");
+//String e = request.getParameter("Price");
 
 Connection conn = null;
 Statement st = null;
 PreparedStatement stmt = null;
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-if (c!=null && d!=null && e!=null) 
+if (c!=null && d!=null) 
 {
 conn = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
-String data = "EXEC Sales.INS_Sales @Name = ?, @Numer=?, @Price=?";
+String data = "EXEC Sales.INS_Sales @Product = ?, @Number=?";
 stmt = conn.prepareStatement(data);
 stmt.setString(1, c);
 stmt.setString(2, d);
-stmt.setString(3, e);
+//stmt.setString(3, e);
 response.setCharacterEncoding("UTF-8");
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html;charset=UTF-8");
 int i = stmt.executeUpdate();
-
 if (i > 0) {
     System.out.println("success");
-    response.sendRedirect("products");
+    response.sendRedirect("../sales");
 } else {
     System.out.println("stuck somewhere");
-    out.println("<script type=\"text/javascript\">");  
-	out.println("alert('Error');");  
+    out.println("<script type=\"text/javascript\" charset=\"utf-8\">");  
+	out.println("alert('Not enough products');");  
 	out.println("</script>");	
 	
 	out.println("<script type=\"text/javascript\">");  

@@ -70,7 +70,7 @@ table.table th:hover {
 	<td><%=rs.getString("Date") %></td>
 	
 	<td style="width: 20%"> 
-	<a href='../Delete/DSales.jsp?d=<%=rs.getString("PurchasesID")%>' onclick="return confirm('Ви впевнені, що хочете видалити покупку?');" class="btn btn-danger">Видалити</a>
+	<a href='./Delete/DSales.jsp?d=<%=rs.getString("PurchasesID")%>' onclick="return confirm('Ви впевнені, що хочете видалити покупку?');" class="btn btn-danger">Видалити</a>
 	
 	</td>
 	</tr>
