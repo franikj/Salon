@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
@@ -11,9 +12,24 @@
 </head>
 <style>
 
+#mainnav{
+z-index: 10;
+}
+
+.header {
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
 #bla{
-	font-size: 100 px;
+	
 	font-family: 'Lobster', cursive;
 }
 
@@ -62,29 +78,50 @@ body {
 </style>
 </head>
 <body>
-
+<div id="mainnav"  class="header">
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="schedule">Журнал</a>
   <a href="services">Послуги</a>
   <a href="clients">Клієнти</a>
   <a href="sales">Продаж</a>
-  <a href="staff">Працівники</a>
   <a href="products">Товари</a>
+  <a href="writeoff">Cписання</a>
+  <a href="staff">Працівники</a>
+  <a href="reports">Звіти</a>
   
 </div>
-<div id="bla" >
-<h3>Салон краси Людмили Чайки</h3>
+
+<div id="bla">
+<center><h2>Салон краси Людмили Чайки</h2></center>
 </div>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Відкрити меню</span>
+
+<span style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; Відкрити меню</span>
+</div>
+
 
 <script>
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("mySidenav").style.width = "260px";
 }
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("mainnav");
+var sticky = header.offsetTop;
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  }  
+  else {
+    header.classList.remove("sticky");
+  }
 }
 </script>
 </body>

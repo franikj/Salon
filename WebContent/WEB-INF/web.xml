@@ -10,6 +10,10 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+    <resource-env-ref>
+    <resource-env-ref-name>jdbc/Salon</resource-env-ref-name>
+    <resource-env-ref-type>javax.sql.DataSourse</resource-env-ref-type>
+  </resource-env-ref>
   <servlet>
     <servlet-name>Indexcontroller</servlet-name>
     <servlet-class>com.industry.controller.Indexcontroller</servlet-class>
@@ -27,6 +31,10 @@
     <url-pattern>/Registercontroller</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+    <servlet-name>ProductCat</servlet-name>
+    <jsp-file>/Show/Show.jsp</jsp-file>
+  </servlet>
   <servlet>
     <servlet-name>Products</servlet-name>
     <jsp-file>/nav/Products.jsp</jsp-file>
@@ -51,35 +59,43 @@
     <servlet-name>Schedule</servlet-name>
     <jsp-file>/nav/Schedule.jsp</jsp-file>
   </servlet>
- 
+ <servlet>
+    <servlet-name>Reports</servlet-name>
+    <jsp-file>/nav/Reports.jsp</jsp-file>
+  </servlet>
+
+
+
   <servlet-mapping>
     <servlet-name>Products</servlet-name>
     <url-pattern>/products</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>Reports</servlet-name>
+    <url-pattern>/reports</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProductCat</servlet-name>
+    <url-pattern>/cat</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Customers</servlet-name>
     <url-pattern>/clients</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>Employees</servlet-name>
     <url-pattern>/staff</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>Sales</servlet-name>
     <url-pattern>/sales</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>Services</servlet-name>
     <url-pattern>/services</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>Schedule</servlet-name>
     <url-pattern>/schedule</url-pattern>
   </servlet-mapping>
-  <jsp-config>
-    <jsp-property-group>
-      <url-pattern>*.jsp</url-pattern>
-      <page-encoding>UTF-8</page-encoding>
-    </jsp-property-group>
-  </jsp-config>
 </web-app>

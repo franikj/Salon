@@ -21,6 +21,6 @@
 <a href="index.jsp">Home</a>
 </div><br><br>
 <center><h2> Введено невірний логін або пароль. Спробуйте ще раз <h2></center>
-<center><input id="in" type= "submit" name="submit" value="Увійти"></input><br><br></center>
+<center><input id="in" type= "submit" name="submit" value="Submit"></input><br><br></center>
 </body>
 </html>

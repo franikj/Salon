@@ -11,14 +11,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Login</title>
 <body>
-<form action="Indexcontroller" method="post">
 
-    <center><h1>Салон краси Людмили Чайки</h1></center>
-    <center><input type="text" name="uid" placeholder="Username"></input><br><br></center>
-    <center><input type="password" name="pass" placeholder="Password"></input><br></center><br>
+	 <center><h1>Салон краси Людмили Чайки</h1></center>
+	 
+<form method="post" action="Indexcontroller" >
+
+    <center><input type="text" required name="Username" placeholder="Username" ></input><br></center>
+    <center><input type="password" required name="Password" placeholder="Password"></input><br></center><br>
   	<center><input id="in" type= "submit" name="submit" value="Увійти"></input><br><br></center>
-    
 </form>
+<!-- <a href="Login.jsp? s1=link">Get all user detail</a> -->
 	<center><h2>Немає акаунту? <a href="register.jsp" style="color:#73C6B6"> Створити</a></h2></center>
   <footer>
  <center><i id="i" > Salon 2019 ©</i></center>

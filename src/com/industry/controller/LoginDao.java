@@ -9,38 +9,32 @@ import java.sql.ResultSet;
 public class LoginDao 
 {
 	public static Connection con;
-    public static String JDBC_URL = "jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true";
+    public static String JDBC_URL = "jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true;sslProtocol=TLSv1.2;";
 	
-		public static boolean validate(String user_id, String pass_word )
+		public static boolean validate(String Username, String Password )
 		{
 			boolean status = false;
-			try
-			{
-				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			try {
+	            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 	            con = DriverManager.getConnection(JDBC_URL);
-			
-			String logq="select * from ADM.Administration where Username=? AND Password=?";
-			PreparedStatement ps= con.prepareStatement(logq);
-			ps.setString(1, user_id);
-			ps.setString(2, pass_word);
-			
-			ResultSet rs = ps.executeQuery();
-			status=rs.next();
-			con.close();
-			status = true;
-			}
-			catch(Exception e)
+	           
+	    		String logq="SELECT * FROM ADM.Administration WHERE Username=? AND Password=?";
+				PreparedStatement pss= con.prepareStatement(logq);
+				pss.setString(1, Username);
+				pss.setString(2, Password);
+	    			ResultSet rs = pss.executeQuery();
+	    		status=rs.next();
+	    
+				
+	            }
+			catch(Exception sqlExeption)
 			{
-				System.out.println(e);
+				 sqlExeption.printStackTrace();
 			}
-			return status;	
-			
-			
-		}
 		
-		
-		
-		
-	}
+	        
+		    		return status;
+	            }
+}
 
 

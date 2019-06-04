@@ -6,7 +6,7 @@
 
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Unsuccessful_Page</title>
+<title>Failed Login</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
 <a href="aboutus.jsp">About us</a>
 <a href="index.jsp">Home</a>
 </div><br><br>
-<center><h1> Введено невірний логін або пароль. Спробуйте ще раз<span style="color: #e6b800"> V1</span></h1></center>
-<center><input id="in" type= "submit" name="submit" value="Увійти"></input><br><br></center>
+<center><h2> Введено невірний логін або пароль. Спробуйте ще раз</h2></center>
+<center><input id="in" type= "submit" name="submit" value="Спробувати ще раз"></input><br><br></center>
 </body>
 </html>

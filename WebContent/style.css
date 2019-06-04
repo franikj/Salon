@@ -11,7 +11,7 @@ h1
 {	
   font-family:'Lobster', cursive;
    cursive;
-  font-size: 55px;
+  font-size: 45px;
   color: #282828;
   background-color: white;
   position: center;
@@ -23,6 +23,11 @@ h2
 {	font-family: 'Yanone Kaffeesatz', sans-serif;
 	color: 	#404040 ;
 	font-size: 30px;
+}
+
+#bla{
+	
+	font-family: 'Lobster', cursive;
 }
 
 
@@ -117,7 +122,6 @@ h2
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-
 input
 {	
   font-family: "Roboto", sans-serif;
@@ -153,8 +157,7 @@ p
 {	font-family: monospace;
 	font-size: 20px;
 	color: #3e2f3e;
-	background-color: white;
-	width: 30%;
+	
 	
 }
 a
