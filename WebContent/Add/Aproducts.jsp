@@ -10,12 +10,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/dmhendricks/bootstrap-grid-css@4.1.3/dist/css/bootstrap-grid.min.css" />
 <title>Add</title>
 <body>
+
+<form action="" method="get">
+	<div class="container">
+	<h2> Find by bar-code</h2>
+	<div class="form-group" style="wigth: 80%;">
+		<label>Bar-code</label>
+		<input type="number" class="form-control" required name="ProductID" />
+	</div>
+	
+	<button type="submit" class="btn btn-primary"> OK</button>
+	<a href='../Edit/EProducts.jsp?u=<%=request.getParameter("ProductID")%>' class="btn btn-warning">Find ID</a>
+	</div>
+</form>
+
 <%
 
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
@@ -26,20 +41,22 @@ ResultSet rss = null;
 rss = stt.executeQuery("select * From Sales.ProductCategory") ;
 
 %>
-<p><br></p>
 <form action="" method="post">
 	<div class="container">
+	<h2> Add new</h2>
 	<div class="form-group" style="wigth: 80%;">
 		<label>Bar-code</label>
 		<input type="number" class="form-control" required name="ProductID" />
 	</div>
-	<div class="form-group" style="wigth: 80%;">
+	
+		<div class="form-group" style="wigth: 80%;">
 		<label>Name</label>
 		<input type="text" class="form-control" required name="Name" />
 	</div>
 	<div class="custom-select">
 		<label>Category</label>
-		<select name="item" class="custom-select">
+		<select name="item" class="custom-select" required>
+			<option>---</option>
         <%  while(rss.next()){ %>
             <option><%= rss.getString(2)%></option>
         <% } %>
@@ -64,7 +81,6 @@ rss = stt.executeQuery("select * From Sales.ProductCategory") ;
 	<button type="submit" class="btn btn-primary"> Ok</button>
 	<a href="../products" class="btn btn-default">Back</a>
 	</div>
-</form>
 <% 
                 String s=request.getParameter("item");
                 if (s !=null)
@@ -75,6 +91,8 @@ rss = stt.executeQuery("select * From Sales.ProductCategory") ;
                 
                 
       %>
+</form>
+
 
 </body>
 <script>
@@ -154,8 +172,6 @@ document.addEventListener("click", closeAllSelect);
 </html>
 
 <%
-DecimalFormat df = new DecimalFormat("0.00"); 
-df.setMaximumFractionDigits(2);
 
 String a = request.getParameter("ProductID");
 String b = request.getParameter("Name");
@@ -164,7 +180,6 @@ String d = request.getParameter("Amount");
 String e = request.getParameter("PurchasePrice");
 String f = request.getParameter("SellingPrice");
 String g = request.getParameter("Description");
-
 
 Connection conn = null;
 Statement st = null;
@@ -186,10 +201,9 @@ response.setCharacterEncoding("UTF-8");
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html;charset=UTF-8");
 int i = stmt.executeUpdate();
-
 if (i > 0) {
     System.out.println("success");
-    response.sendRedirect("products");
+    response.sendRedirect("../products");
 } else {
     System.out.println("stuck somewhere");
     out.println("<script type=\"text/javascript\">");  
@@ -202,18 +216,4 @@ if (i > 0) {
 	
 }
 } 
-
-
-//{
-//	out.println("<script type=\"text/javascript\">");  
-	//out.println("alert('Sorry, Password or Username Error');");  
-	//out.println("</script>");	
-	
-//}
-
-	
-
-
-
-
 %>

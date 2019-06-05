@@ -25,11 +25,13 @@ ResultSet res = null;
 %>
 <form action="" method="post">
 <%
+
 st = conn.createStatement();
 String u = request.getParameter("u");
 int num = Integer.parseInt(u);
 String data = "Select * from Sales.Products where ProductID='"+num+"'";
 res = st.executeQuery(data);
+
 while(res.next()){
 %>
 	<div class="container">
@@ -84,7 +86,7 @@ response.setCharacterEncoding("UTF-8");
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html;charset=UTF-8");
 stmt.executeUpdate();
-response.sendRedirect("/Login-Registration_Form-master/products");
+response.sendRedirect("../products");
 }
 
 %>

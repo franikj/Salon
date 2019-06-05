@@ -10,7 +10,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-    <resource-env-ref>
+  <resource-env-ref>
     <resource-env-ref-name>jdbc/Salon</resource-env-ref-name>
     <resource-env-ref-type>javax.sql.DataSourse</resource-env-ref-type>
   </resource-env-ref>
@@ -30,8 +30,7 @@
     <servlet-name>Registercontroller</servlet-name>
     <url-pattern>/Registercontroller</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>ProductCat</servlet-name>
     <jsp-file>/Show/Show.jsp</jsp-file>
   </servlet>
@@ -59,18 +58,23 @@
     <servlet-name>Schedule</servlet-name>
     <jsp-file>/nav/Schedule.jsp</jsp-file>
   </servlet>
- <servlet>
+  <servlet>
     <servlet-name>Reports</servlet-name>
     <jsp-file>/nav/Reports.jsp</jsp-file>
   </servlet>
-
-
-
+    <servlet>
+    <servlet-name>Writeoff</servlet-name>
+    <jsp-file>/nav/Writeoff.jsp</jsp-file>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Products</servlet-name>
     <url-pattern>/products</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Writeoff</servlet-name>
+    <url-pattern>/writeoff</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>Reports</servlet-name>
     <url-pattern>/reports</url-pattern>
   </servlet-mapping>

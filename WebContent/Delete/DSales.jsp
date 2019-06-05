@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
     <%@ page import="java.sql.*" %>
 <%
 
@@ -9,9 +9,28 @@ int no = Integer.parseInt(id);
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 Connection conn = null;
 conn = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
-Statement st = conn.createStatement();
-st.executeUpdate("EXEC Sales.DEL_Sales @ID='"+id+"'");
-response.sendRedirect("/Login-Registration_Form-master/sales");
-
+PreparedStatement st = null;
+String data = ("EXEC Sales.DEL_Sales @ID='"+id+"'");
+st = conn.prepareStatement(data);
+try {
+int i = st.executeUpdate();
+if (i > 0) {
+    System.out.println("success");
+    response.sendRedirect("../sales");
+} else {
+    System.out.println("stuck somewhere");
+    out.println("<script type=\"text/javascript\">");  
+	out.println("alert('Error');");  
+	out.println("</script>");	
+}
+}
+catch (Exception e) {
+	%>
+	<div id="centered">
+		<h1> Error page!</h1>
+	
+<p>You cannot delete this purchase <a href="../products" class="btn btn-default">Назад</a></p>
+	</div>
+	<%
+}
 %>
-

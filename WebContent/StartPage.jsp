@@ -12,7 +12,6 @@
 <%@ include file="go.jsp" %>
 <head>
 <title>Welcome</title>
-<style rel="stylesheet"></style>
 </head>
 
 <body>

@@ -76,8 +76,8 @@ table.table th:hover {
 	<td><%=rs.getString("Description") %></td>
 	<td><%=rs.getString("ModDate") %></td>
 	<td style="width: 20%"> 
-	<a href='../Edit/EProducts.jsp?u=<%=rs.getString("ProductID")%>' class="btn btn-warning">Змінити</a>
-	<a href='../Delete/Dproducts.jsp?d=<%=rs.getString("ProductID")%>' onclick="return confirm('Ви впевнені, що хочете видалити товар?');" class="btn btn-danger">Видалити</a>
+	<a href='./Edit/EProducts.jsp?u=<%=rs.getString("ProductID")%>' class="btn btn-warning">Змінити</a>
+	<a href='./Delete/Dproducts.jsp?d=<%=rs.getString("ProductID")%>' onclick="return confirm('Ви впевнені, що хочете видалити товар?');" class="btn btn-danger">Видалити</a>
 	
 	</td>
 	</tr>

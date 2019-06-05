@@ -65,8 +65,9 @@ table.table th:hover {
 	<tr>
 	<td><%=rs.getString("PurchasesID") %></td>
 	<td><%=rs.getString("Name") %></td>
-	<td><%=rs.getString("Price") %></td>
 	<td><%=rs.getString("Number") %></td>
+	<td><%=rs.getString("Price") %></td>
+	
 	<td><%=rs.getString("Date") %></td>
 	
 	<td style="width: 20%"> 

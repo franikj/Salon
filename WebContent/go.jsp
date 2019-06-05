@@ -28,10 +28,6 @@ z-index: 10;
   width: 100%;
 }
 
-#bla{
-	
-	font-family: 'Lobster', cursive;
-}
 
 body {
   font-family: "Lato", sans-serif;
@@ -63,6 +59,7 @@ body {
   color: #f1f1f1;
 }
 
+
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -76,6 +73,8 @@ body {
   .sidenav a {font-size: 18px;}
 }
 </style>
+
+
 </head>
 <body>
 <div id="mainnav"  class="header">
@@ -91,11 +90,9 @@ body {
   <a href="reports">Звіти</a>
   
 </div>
-
 <div id="bla">
 <center><h2>Салон краси Людмили Чайки</h2></center>
 </div>
-
 <span style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; Відкрити меню</span>
 </div>
 
