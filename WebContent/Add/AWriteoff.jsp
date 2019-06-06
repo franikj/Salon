@@ -42,6 +42,11 @@ rss = stt.executeQuery("select Name From Sales.Products") ;
 		<label>Amount</label>
 		<input type="number" class="form-control" required name="Number" />
 	</div>
+
+	<div class="form-group" style="wigth: 80%;">
+		<label>Description</label>
+		<textarea type="text" class="form-control" name="Description"/></textarea>
+	</div>
 	<button type="submit" class="btn btn-primary"> Ok</button>
 	<a href="../sales" class="btn btn-default">Back</a>
 	</div>
@@ -138,7 +143,7 @@ document.addEventListener("click", closeAllSelect);
 
 String c = request.getParameter("item");
 String d = request.getParameter("Number");
-//String e = request.getParameter("Price");
+String e = request.getParameter("Description");
 
 Connection conn = null;
 Statement st = null;
@@ -147,11 +152,11 @@ Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 if (c!=null && d!=null) 
 {
 conn = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
-String data = "EXEC Sales.INS_Writeoff @Product = ?, @Number=?";
+String data = "EXEC Sales.INS_Writeoff @Product = ?, @Number=?, @Description=?";
 stmt = conn.prepareStatement(data);
 stmt.setString(1, c);
 stmt.setString(2, d);
-//stmt.setString(3, e);
+stmt.setString(3, e);
 response.setCharacterEncoding("UTF-8");
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html;charset=UTF-8");

@@ -31,7 +31,7 @@ table.table th:hover {
 <br>
 <div class="container" style="width: 80%; margin-right: 20px">
 <div class="col-md-6"> 
-<a href="./Add/ASales.jsp" class="btn btn-primary" style="margin: 25px 0px;">Продати товар</a>
+<a href="./Add/AWriteoff.jsp" class="btn btn-primary" style="margin: 25px 0px;">Списати товар</a>
 </div>
 
 <table id="mytable" class="table" style="background-color:white;">
@@ -42,6 +42,7 @@ table.table th:hover {
 		<th>Кількість</th>
 		<th>Сума</th>
 		<th>Дата</th>
+		<th>Опис</th>
 		<th class="text-center"></th>
 		</tr>
 	</thead>
@@ -66,12 +67,11 @@ table.table th:hover {
 	<td><%=rs.getString("WriteoffID") %></td>
 	<td><%=rs.getString("Name") %></td>
 	<td><%=rs.getString("Number") %></td>
-	<td><%=rs.getString("Price") %></td>
-	
+	<td bgcolor=#eee6ff><%=rs.getString("Price")%></td>
 	<td><%=rs.getString("Date") %></td>
-	
+	<td><%=rs.getString("Description") %></td>
 	<td style="width: 20%"> 
-	<a href='./Delete/DSales.jsp?d=<%=rs.getString("WriteoffID")%>' onclick="return confirm('Ви впевнені, що хочете видалити покупку?');" class="btn btn-danger">Видалити</a>
+	<a href='./Delete/DWriteoff.jsp?d=<%=rs.getString("WriteoffID")%>' onclick="return confirm('Ви впевнені, що хочете видалити покупку?');" class="btn btn-danger">Видалити</a>
 	
 	</td>
 	</tr>

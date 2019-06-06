@@ -23,20 +23,26 @@ Statement st = null;
 PreparedStatement stmt = null;
 ResultSet res = null;
 %>
+
+
 <form action="" method="post">
 <%
 
 st = conn.createStatement();
 String u = request.getParameter("u");
-int num = Integer.parseInt(u);
+
+try {
+if (u != null) {
+//int num = Integer.parseInt(u);
+long num = Long.parseLong(u);
 String data = "Select * from Sales.Products where ProductID='"+num+"'";
 res = st.executeQuery(data);
 
 while(res.next()){
 %>
 	<div class="container">
-	<p><br></p>
-	<img src="<%= request.getContextPath() %>/images/edit.jpg" slyle="margin: 20px;">  
+<p><br></p>
+	<img src="<%= request.getContextPath() %>/images/edit.jpg" slyle="margin: 20px;">  <h3>ID : <%=res.getString("ProductID")%></h3>
 	
 	<div class="form-group">
 	<input type="hidden" name="ProductID" value=<%=res.getString("ProductID") %>>
@@ -59,6 +65,24 @@ while(res.next()){
 		<input type="number" class="form-control" name="Amount" value=<%=res.getString("Amount")%>>
 	</div>
 <%
+}
+
+}
+
+else { 
+	
+}}
+
+catch (Exception e) {
+	
+	out.println(e);
+	
+	System.out.println("null value");
+    out.println("<script type=\"text/javascript\">");  
+	out.println("alert('Id cannot be null');");  
+	out.println("</script>");	
+	 
+	
 }
 %>
 	<button type="submit" class="btn btn-warning"> Ok</button>

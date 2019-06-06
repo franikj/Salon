@@ -25,7 +25,7 @@
 
 
 String id = request.getParameter("d");
-int no = Integer.parseInt(id);
+long no = Long.parseLong(id);
 
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 Connection conn = null;

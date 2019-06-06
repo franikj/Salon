@@ -20,14 +20,14 @@
 
 <form action="" method="get">
 	<div class="container">
-	<h2> Find by bar-code</h2>
+	<h2> Find by bar-code (Enter code and click OK, then click FIND)</h2>
 	<div class="form-group" style="wigth: 80%;">
 		<label>Bar-code</label>
 		<input type="number" class="form-control" required name="ProductID" />
 	</div>
 	
 	<button type="submit" class="btn btn-primary"> OK</button>
-	<a href='../Edit/EProducts.jsp?u=<%=request.getParameter("ProductID")%>' class="btn btn-warning">Find ID</a>
+	<a href='../Edit/EProducts.jsp?u=<%=request.getParameter("ProductID")%>' class="btn btn-warning">FIND</a>
 	</div>
 </form>
 
@@ -50,11 +50,11 @@ rss = stt.executeQuery("select * From Sales.ProductCategory") ;
 	</div>
 	
 		<div class="form-group" style="wigth: 80%;">
-		<label>Name</label>
+		<label>Product name</label>
 		<input type="text" class="form-control" required name="Name" />
 	</div>
 	<div class="custom-select">
-		<label>Category</label>
+		<label>Product category</label>
 		<select name="item" class="custom-select" required>
 			<option>---</option>
         <%  while(rss.next()){ %>
@@ -63,15 +63,15 @@ rss = stt.executeQuery("select * From Sales.ProductCategory") ;
         </select>
 	</div>
 	<div class="form-group" style="wigth: 80%;">
-		<label>Amount</label>
+		<label>Number</label>
 		<input type="number" class="form-control" required name="Amount"/>
 	</div>
 	<div class="form-group" style="wigth: 80%;">
-		<label>Price 1</label>
+		<label>Purchase price</label>
 		<input type="number" class="form-control" required name="PurchasePrice" />
 	</div>
 	<div class="form-group" style="wigth: 80%;">
-		<label>Price 2</label>
+		<label>Selling price</label>
 		<input type="number" class="form-control" required name="SellingPrice"/>
 	</div> 
 	<div class="form-group" style="wigth: 80%;">
@@ -81,19 +81,7 @@ rss = stt.executeQuery("select * From Sales.ProductCategory") ;
 	<button type="submit" class="btn btn-primary"> Ok</button>
 	<a href="../products" class="btn btn-default">Back</a>
 	</div>
-<% 
-                String s=request.getParameter("item");
-                if (s !=null)
-                {
-                    out.println("Selected  : "+s);
-                }
-                
-                
-                
-      %>
 </form>
-
-
 </body>
 <script>
 var x, i, j, selElmnt, a, b, c;
@@ -168,9 +156,9 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
+
 </script>
 </html>
-
 <%
 
 String a = request.getParameter("ProductID");
@@ -187,6 +175,7 @@ PreparedStatement stmt = null;
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 if (a!=null && b!=null && c!=null && d!=null && e!=null && f!=null && g!=null)
 {
+	try{
 conn = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
 String data = "EXEC Sales.INS_Products @ID=?, @Name=?, @Category=?, @Amount=?, @Price1=?, @Price2=?, @Description=?";
 stmt = conn.prepareStatement(data);
@@ -203,17 +192,31 @@ response.setContentType("text/html;charset=UTF-8");
 int i = stmt.executeUpdate();
 if (i > 0) {
     System.out.println("success");
-    response.sendRedirect("../products");
+       response.sendRedirect("../products");
+    
 } else {
     System.out.println("stuck somewhere");
     out.println("<script type=\"text/javascript\">");  
-	out.println("alert('Error');");  
+	out.println("alert('Error, check product ID and Name');");  
 	out.println("</script>");	
 	
 	out.println("<script type=\"text/javascript\">");  
 	out.println("window.history.go(-1);");  
-	out.println("</script>");	 
+	out.println("</script>");
+		 
 	
+} } catch (Exception ee)
+
+		{
+	 System.out.println("stuck somewhere");
+	    out.println("<script type=\"text/javascript\">");  
+		out.println("alert('Error, check product ID and Name');");  
+		out.println("</script>");	
+		
+		out.println("<script type=\"text/javascript\">");  
+		out.println("window.history.go(-1);");  
+		out.println("</script>");}
 }
-} 
 %>
+
+

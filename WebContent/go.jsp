@@ -92,6 +92,7 @@ body {
 </div>
 <div id="bla">
 <center><h2>Салон краси Людмили Чайки</h2></center>
+
 </div>
 <span style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; Відкрити меню</span>
 </div>

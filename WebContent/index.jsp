@@ -21,8 +21,8 @@
   	<center><input id="in" type= "submit" name="submit" value="Увійти"></input><br><br></center>
 </form>
 <!-- <a href="Login.jsp? s1=link">Get all user detail</a> -->
-	<center><h2>Немає акаунту? <a href="register.jsp" style="color:#73C6B6"> Створити</a></h2></center>
-  <footer>
+	<!-- <center><h2>Немає акаунту? <a href="register.jsp" style="color:#73C6B6"> Створити</a></h2></center>
+   --><footer>
  <center><i id="i" > Salon 2019 ©</i></center>
  </footer> 
 </body>

@@ -26,6 +26,7 @@
     <servlet-name>Registercontroller</servlet-name>
     <servlet-class>com.industry.controller.Registercontroller</servlet-class>
   </servlet>
+
   <servlet-mapping>
     <servlet-name>Registercontroller</servlet-name>
     <url-pattern>/Registercontroller</url-pattern>

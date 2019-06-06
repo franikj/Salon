@@ -32,6 +32,7 @@ rss = stt.executeQuery("select Name From Sales.Products") ;
 		<div class="custom-select">
 		<label>Product</label>
 		<select name="item" class="custom-select">
+			 <option>---</option>
         <%  while(rss.next()){ %>
             <option><%= rss.getString(1)%></option>
         <% } %>
@@ -46,16 +47,6 @@ rss = stt.executeQuery("select Name From Sales.Products") ;
 	<a href="../sales" class="btn btn-default">Back</a>
 	</div>
 </form>
-<% 
-                String s=request.getParameter("item");
-                if (s !=null)
-                {
-                    out.println("Selected  : "+s);
-                }
-                
-                
-                
-      %>
 
 </body>
 <script>

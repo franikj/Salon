@@ -17,4 +17,7 @@
 <body>
 
 </body>
+<footer>
+ <center><i id="i" > Salon 2019 ©</i></center>
+ </footer> 
 </html>

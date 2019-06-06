@@ -1,12 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    <%@ page import="java.sql.*" %>
+<%
 
-</body>
-</html>
+String id = request.getParameter("d");
+Long no = Long.parseLong(id);
+
+Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+Connection conn = null;
+conn = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
+PreparedStatement st = null;
+String data = ("EXEC Sales.DEL_Writeoff @ID='"+id+"'");
+st = conn.prepareStatement(data);
+try {
+int i = st.executeUpdate();
+if (i > 0) {
+    System.out.println("success");
+    response.sendRedirect("../writeoff");
+} else {
+    System.out.println("stuck somewhere");
+    out.println("<script type=\"text/javascript\">");  
+	out.println("alert('Error');");  
+	out.println("</script>");	
+}
+}
+catch (Exception e) {
+	%>
+	<div id="centered">
+		<h1> Error page!</h1>
+	
+<p>You cannot delete this purchase <a href="../products" class="btn btn-default">Назад</a></p>
+	</div>
+	<%
+}
+%>

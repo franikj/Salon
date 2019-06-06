@@ -4,7 +4,7 @@
 <%
 
 String id = request.getParameter("d");
-int no = Integer.parseInt(id);
+Integer no = Integer.parseInt(id);
 
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 Connection conn = null;
