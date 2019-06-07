@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/dmhendricks/bootstrap-grid-css@4.1.3/dist/css/bootstrap-grid.min.css" />
 
 <%@ include file="/go.jsp" %>
+<%@ include file="/Show/Scustomers.jsp" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Products</title>

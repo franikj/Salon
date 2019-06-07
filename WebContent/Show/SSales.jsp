@@ -38,7 +38,8 @@ table.table th:hover {
 	<thead>
 		<tr>
 		<th>ID</th>
-		<th onclick="sortTable(1)">Товар</th>
+		<th onclick="sortTable(1)">Штрих-код</th>
+		<th onclick="sortTable(2)">Товар</th>
 		<th>Кількість</th>
 		<th>Сума</th>
 		<th>Дата</th>
@@ -64,6 +65,7 @@ table.table th:hover {
 
 	<tr>
 	<td><%=rs.getString("PurchasesID") %></td>
+		<td><%=rs.getString("ProductID") %></td>	
 	<td><%=rs.getString("Name") %></td>
 	<td><%=rs.getString("Number") %></td>
 	<td><%=rs.getString("Price") %></td>
@@ -71,7 +73,7 @@ table.table th:hover {
 	<td><%=rs.getString("Date") %></td>
 	
 	<td style="width: 20%"> 
-	<a href='./Delete/DSales.jsp?d=<%=rs.getString("PurchasesID")%>' onclick="return confirm('Ви впевнені, що хочете видалити покупку?');" class="btn btn-danger">Видалити</a>
+	<a href='./Delete/DSales.jsp?d=<%=rs.getString("PurchasesID")%>' onclick="return confirm('Ви впевнені, що хочете видалити покупку?');" class="btn btn-danger">Відмінити</a>
 	
 	</td>
 	</tr>

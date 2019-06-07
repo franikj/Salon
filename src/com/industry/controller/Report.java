@@ -10,48 +10,52 @@ import java.util.Objects;
 public class Report {
 
 	public static void perday() {
-		
-		List data = new ArrayList();
 
 		try {
+			
+		//	ResultSet rs = st.executeQuery("Select * from Sales.Purchases");
+
+			try {
+			      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			}catch (ClassNotFoundException e) {
+			System.out.println("Where is your MySQL JDBC Driver?");
+			e.printStackTrace();
+			return;
+			}
+			System.out.println("MySQL JDBC Driver Registered!");
 			Connection con = null;
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection(
-					"jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("Select * from Sales.Purchases");
 
-			while (rs.next()) {
-				String id = rs.getString("PurchasesiD");
-				String name = rs.getString("ProductID");
-				String address = rs.getString("Number");
-				String contactNo = rs.getString("Price");
-				data.add(id + " " + name + " " + address + " " + contactNo);
-
+			try {
+			            con = DriverManager.getConnection(
+								"jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
+			            Statement stmt = con.createStatement();
+			            ResultSet rs;
+			            Connection conn;
+			            rs = stmt.executeQuery("Select PurchaseID, ProductID, Price from Sales.Purchases");
+			            
+				            System.out.print("<!DOCTYPE html>"
+			  + "<html>"
+			  + "<body>"
+			+ "<h1>Report 1</h1> <table border = '2' width = '70%'>");
+			 System.out.print("<tr> <td><b>Publish House</b></td>  <td><b>Book name</b></td> <td><b>ISBN</b></td> </tr> ");
+				            while ( rs.next() ) {
+			String publishing = rs.getString("PurchaseID");
+			String bookName = rs.getString("ProductID");
+			String ISBN = rs.getString("Price");
+		//	conn.Insert(publishing, bookName, ISBN);
+			System.out.println(" <tr><td>" + publishing + "</td> <td>" + bookName + "</td> <td>"  + ISBN + "</td></tr>");
+			                           };
+			}catch (SQLException e) {
+			System.out.println("Connection Failed! Check output console");
+			e.printStackTrace();
+			return;
 			}
-			
-			
-			writeToFile(data, "J:/data.txt");
-			rs.close();
-			st.close();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
 
-	private static void writeToFile(java.util.List<String> list, String path) {
-		BufferedWriter out = null;
-		try {
-			
-			File file = new File(path);
-			out = new BufferedWriter(new FileWriter(file, true));
-			for (String s : list) {
-				out.write(s);
-				out.newLine();
-
+			if (con != null) {
+			System.out.println("You made it, take control your database now!");
 			}
-			out.close();
-		} catch (IOException e) {
+		}	catch (Exception ee){
+			
 		}
 	}		
 	

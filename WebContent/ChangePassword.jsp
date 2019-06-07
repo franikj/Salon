@@ -3,22 +3,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="style.css" rel="stylesheet" type="text/css">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/dmhendricks/bootstrap-grid-css@4.1.3/dist/css/bootstrap-grid.min.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Change password</title>
-<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div class="menu">
-<a href="contact.jsp">Contact</a>
-<a href="aboutus.jsp">About us</a>
-<a href="index.jsp">Home</a>
-<a href="index.jsp">Log out</a>
-</div><br><br>
-<center><h1>Зміна паролю <span style="color: #e6b800"> </span></h1></center>
+
+<center><h1>Зміна паролю</h1></center>
 </head>
-<h2 align="center" ><strong><span style="color: #e6b800"></span></strong></h2>
+
 
 <script language="javascript">
+
 function fncSubmit()
 {
 
@@ -53,16 +56,26 @@ return false;
 document.ChangePasswordForm.submit();
 }
 </script>
-<form name="ChangePasswordForm" method="post" action="processChangePWD.jsp" OnSubmit="return fncSubmit();">
-<div class="forms" >
+<form name="ChangePasswordForm" method="post" action="processChangePWD.jsp" OnSubmit="return fncSubmit(); ">
+	<div class="container" style="wigth: 50%;">
+	
+	<div class="form-group" style="wigth: 50%;">
+		<label>Старий пароль</label>
+		<input type="password" class="form-control" required name="OldPassword" />
+	</div>
 
-<center><p>Старий пароль </p><input name="OldPassword" type="password" id="OLDpwd" size="55"></center>
-<center><p>Новий пароль </p><input name="newpassword" type="password" id="newpassword" size="55"></center>
-<center><p>Підтвердіть пароль </p><input name="conpassword" type="password" id="conpassword" ><br></center>
-<h2> hhhhhhhhhh</h2>
-</div>
-<center><input id="in"  type="submit" name="submit" value="Зберегти"></input></center> 
-</form>
+	<div class="form-group" style="wigth: 50%;">
+		<label>Новий пароль</label>
+		<input type="password" class="form-control" name="newpassword"/></input>
+	</div>
+	<div class="form-group" style="wigth: 50%;">
+		<label>Підтвердіть пароль</label>
+		<input type="password" class="form-control" name="conpassword"/></input>
+	</div>
+	
+	<button type="submit" class="btn btn-primary" name="submit"> Ok</button>
+	<a href="./" class="btn btn-default">Back</a>
+	</div> 
 </head>
 <body>
 

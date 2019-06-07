@@ -29,6 +29,8 @@ rss = stt.executeQuery("select Name From Sales.Products") ;
 <p><br></p>
 <form action="" method="post">
 	<div class="container">
+	
+			<h2>Select product</h2>
 		<div class="custom-select">
 		<label>Product</label>
 		<select name="item" class="custom-select">
@@ -39,6 +41,24 @@ rss = stt.executeQuery("select Name From Sales.Products") ;
         </select>
 	</div>
 	
+	<div class="form-group" style="wigth: 80%;">
+		<label>Amount</label>
+		<input type="number" class="form-control" required name="Number" />
+	</div>
+	<button type="submit" class="btn btn-primary"> Ok</button>
+	</div>
+</form>
+
+<p><br></p>
+<form action="" method="post">
+	<div class="container">
+	
+			<h2>Scan barcode</h2>
+			
+	<div class="form-group" style="wigth: 80%;">
+		<label>Barcode</label>
+		<input type="number" class="form-control" required name="ProductID" />
+	</div>
 	<div class="form-group" style="wigth: 80%;">
 		<label>Amount</label>
 		<input type="number" class="form-control" required name="Number" />
@@ -129,7 +149,7 @@ document.addEventListener("click", closeAllSelect);
 
 String c = request.getParameter("item");
 String d = request.getParameter("Number");
-//String e = request.getParameter("Price");
+String e = request.getParameter("ProductID");
 
 Connection conn = null;
 Statement st = null;
@@ -150,7 +170,8 @@ int i = stmt.executeUpdate();
 if (i > 0) {
     System.out.println("success");
     response.sendRedirect("../sales");
-} else {
+} 
+else {
     System.out.println("stuck somewhere");
     out.println("<script type=\"text/javascript\" charset=\"utf-8\">");  
 	out.println("alert('Not enough products');");  
@@ -161,7 +182,34 @@ if (i > 0) {
 	out.println("</script>");	 
 	
 }
+} else if (d!=null && e!=null) 
+{
+conn = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
+String data = "EXEC Sales.INS_SalesID @ID = ?, @Number=?";
+stmt = conn.prepareStatement(data);
+stmt.setString(1, e);
+stmt.setString(2, d);
+//stmt.setString(3, e);
+response.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
+response.setContentType("text/html;charset=UTF-8");
+int i = stmt.executeUpdate();
+if (i > 0) {
+    System.out.println("success");
+    response.sendRedirect("../sales");
 } 
+else {
+    System.out.println("stuck somewhere");
+    out.println("<script type=\"text/javascript\" charset=\"utf-8\">");  
+	out.println("alert('Not enough products');");  
+	out.println("</script>");	
+	
+	out.println("<script type=\"text/javascript\">");  
+	out.println("window.history.go(-1);");  
+	out.println("</script>");	 
+	
+}
+}  
 
 
 //{
