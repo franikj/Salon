@@ -15,11 +15,6 @@
 <title>Change password</title>
 </head>
 <body>
-
-<center><h1>Зміна паролю</h1></center>
-</head>
-
-
 <script language="javascript">
 
 function fncSubmit()
@@ -56,6 +51,8 @@ return false;
 document.ChangePasswordForm.submit();
 }
 </script>
+
+<center><h1>Зміна паролю</h1></center>
 <form name="ChangePasswordForm" method="post" action="processChangePWD.jsp" OnSubmit="return fncSubmit(); ">
 	<div class="container" style="wigth: 50%;">
 	
@@ -76,8 +73,7 @@ document.ChangePasswordForm.submit();
 	<button type="submit" class="btn btn-primary" name="submit"> Ok</button>
 	<a href="./" class="btn btn-default">Back</a>
 	</div> 
-</head>
-<body>
+</form> 
+	</body>
 
-</body>
 </html>

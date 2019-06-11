@@ -35,12 +35,27 @@ h1
 </form>
 <form  action="./Reports/RServices.jsp">
 <div class="col-md-6"> 
-<center><input id="in" type= "submit" name="submit" value="Посуги"></input><br><br></center>
+<center><input id="in" type= "submit" name="submit" value="Послуги"></input><br><br></center>
 </div>
 </form>
 <form  action="./Reports/RSales.jsp">
 <div class="col-md-6"> 
 <center><input id="in" type= "submit" name="submit" value="Продаж"></input><br><br></center>
+</div>
+</form>
+<form  action="./Reports/RClients.jsp">
+<div class="col-md-6"> 
+<center><input id="in" type= "submit" name="submit" value="Клієнти"></input><br><br></center>
+</div>
+</form>
+<form  action="./Reports/RWriteoff.jsp">
+<div class="col-md-6"> 
+<center><input id="in" type= "submit" name="submit" value="Списання"></input><br><br></center>
+</div>
+</form>
+<form  action="./Reports/REmp.jsp">
+<div class="col-md-6"> 
+<center><input id="in" type= "submit" name="submit" value="Працівники"></input><br><br></center>
 </div>
 </form>
 </body> 

@@ -12,7 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/dmhendricks/bootstrap-grid-css@4.1.3/dist/css/bootstrap-grid.min.css" />
-<title>Sales Report</title>
+<title>Writeoff Report</title>
 <style>
 
   .box {
@@ -71,24 +71,23 @@ ResultSet rss = null;
 if (n!=null && s!=null)
 {
 conn = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
-String query = "EXEC SalesReport @datefrom=?, @dateto=?" ;
+String query = "EXEC WriteoffReport @datefrom=?, @dateto=?" ;
 ps = conn.prepareStatement(query);
 //ps.setString(1, s);
 ps.setString(1, s);
 ps.setString(2, n);
 rss = ps.executeQuery();
-response.setContentType("text/html;charset=UTF-8");
    out.println("<div style='background-color: white'>");
 	out.println("<center><table BORDER=1 CELLPADDING=0 CELLSPACING=0 WIDTH=70% >"
 	        +"<th><center>Категорія</center></th><th><center>Товар</center></th><th><center>Сума</center></th><th><center>Кількість</center></th></tr>");
 
 	while(rss.next()){
-	out.println("<tr><td><center>"+rss.getString("Category")+"</center></td>"
-			+ "<td>"+rss.getString("Product")+"</td>"
-			+ "<td><center>"+rss.getString("Sum")+"</center></td>"
-			+ "<td><center>"+rss.getString("Number")+"</center></td>");
+	out.println("<td><center>"+rss.getString("Category")+"</center></td>"
+			+ "<td><center>"+rss.getString("Product")+"</center></td>"
+	         + "<td><center>"+rss.getString("Sum")+"</center></td>"
+	         + "<td><center>"+rss.getString("Number")+"</center></td></tr>");
 	}
-	out.println("</table> </center>");
+	out.println("</table></center>");
 	out.println("</div>");
 
 

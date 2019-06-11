@@ -83,7 +83,6 @@ table.table th:hover {
 	%>
 	</tbody>
 </table>
-
 <script>
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

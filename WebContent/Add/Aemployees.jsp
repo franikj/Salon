@@ -23,32 +23,50 @@ Connection con = null;
 con = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
 Statement stt = con.createStatement();
 ResultSet rss = null;
-rss = stt.executeQuery("select Name From Sales.Products ORDER BY Name") ;
+rss = stt.executeQuery("select * From Staff.Position") ;
 
 %>
 <p><br></p>
 <form action="" method="post">
 	<div class="container">
-		<div class="custom-select">
-		<label>Product</label>
+	<div class="form-group" style="wigth: 80%;">
+		<label>Last name</label>
+		<input type="text" class="form-control" required name="LastName" />
+	</div>
+	<div class="form-group" style="wigth: 80%;">
+		<label>First name</label>
+		<input type="text" class="form-control" required name="FirstName" />
+	</div>
+	<div class="form-group" style="wigth: 80%;">
+		<label>Middle name</label>
+		<input type="text" class="form-control" required name="MiddleName"/>
+	</div>
+	<div class="custom-select">
+		<label>Position</label>
 		<select name="item" class="custom-select">
         <%  while(rss.next()){ %>
-            <option><%= rss.getString(1)%></option>
+            <option><%= rss.getString(2)%></option>
         <% } %>
         </select>
 	</div>
+	<div class="form-group" style="wigth: 80%;">
+		<label>Date of birth</label>
+		<input type="date" class="form-control" required name="BirthDate"/>
+	</div> 
 	
 	<div class="form-group" style="wigth: 80%;">
-		<label>Amount</label>
-		<input type="number" class="form-control" required name="Number" />
+		<label>Phone</label>
+		<input type="number" class="form-control" required name="Phone" />
 	</div>
-
+	
 	<div class="form-group" style="wigth: 80%;">
-		<label>Description</label>
-		<textarea type="text" class="form-control" name="Description"/></textarea>
+		<label>Date of hire</label>
+		<input type="date" class="form-control" required name="HireDate"/>
 	</div>
-	<button type="submit" class="btn btn-primary"> Ok</button>
-	<a href="../sales" class="btn btn-default">Back</a>
+	
+	
+	<button type="submit" class="btn btn-primary"> Save</button>
+	<a href="../staff" class="btn btn-default">Back</a>
 	</div>
 </form>
 <% 
@@ -138,36 +156,45 @@ then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 </script>
 </html>
-
 <%
+String a = request.getParameter("FirstName");
+String b = request.getParameter("LastName");
+String c = request.getParameter("MiddleName");
+String e = request.getParameter("Phone");
+String d = request.getParameter("BirthDate");
+String f = request.getParameter("HireDate");
+String g = request.getParameter("item");
 
-String c = request.getParameter("item");
-String d = request.getParameter("Number");
-String e = request.getParameter("Description");
 
-Connection conn = null;
+	Connection conn = null;
 Statement st = null;
 PreparedStatement stmt = null;
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-if (c!=null && d!=null) 
+if (a!=null && b!=null && c!=null && d!=null && e!=null && f!=null)
 {
 conn = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
-String data = "EXEC Sales.INS_Writeoff @Product = ?, @Number=?, @Description=?";
+//String data = "INSERT INTO Business.Customers (FirstName, LastName, MiddleName, BirthDate, Phone, Description) VALUES (?, ?, ?, ?, ?, ?)";
+String data = "EXEC [Sales].INS_Emp @FName=?,@LName=?,@MName=? ,@Phone=?,@DOB=?, @Hire=?, @Position=?";
 stmt = conn.prepareStatement(data);
-stmt.setString(1, c);
-stmt.setString(2, d);
-stmt.setString(3, e);
+stmt.setString(1, a);
+stmt.setString(2, b);
+stmt.setString(3, c);
+stmt.setString(4, e);
+stmt.setString(5, d);
+stmt.setString(6, f);
+stmt.setString(7, g);
+
 response.setCharacterEncoding("UTF-8");
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html;charset=UTF-8");
 int i = stmt.executeUpdate();
 if (i > 0) {
     System.out.println("success");
-    response.sendRedirect("../writeoff");
+    response.sendRedirect("../staff");
 } else {
     System.out.println("stuck somewhere");
-    out.println("<script type=\"text/javascript\" charset=\"utf-8\">");  
-	out.println("alert('Not enough products');");  
+    out.println("<script type=\"text/javascript\">");  
+	out.println("alert('Error');");  
 	out.println("</script>");	
 	
 	out.println("<script type=\"text/javascript\">");  
@@ -176,14 +203,6 @@ if (i > 0) {
 	
 }
 } 
-
-
-//{
-//	out.println("<script type=\"text/javascript\">");  
-	//out.println("alert('Sorry, Password or Username Error');");  
-	//out.println("</script>");	
-	
-//}
 
 	
 

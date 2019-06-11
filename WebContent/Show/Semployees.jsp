@@ -1,11 +1,13 @@
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*, com.industry.controller.*" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
+  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../style.css">
+<link rel="stylesheet" type="text/css" href="./style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -31,35 +33,36 @@ table.table th:hover {
 <br>
 <div class="container" style="width: 80%; margin-right: 20px">
 <div class="col-md-6"> 
-<a href="./Add/Aproducts.jsp" class="btn btn-primary" style="margin: 25px 0px;">Додати товар</a>
-<a href="./Show/Show.jsp" class="btn btn-primary" style="margin: 25px 0px;">Категорії товарів</a>
+<a href="./Add/Aemployees.jsp" class="btn btn-primary" style="margin: 25px 0px;">Add employee</a>
+<a href="./Show/Sposition.jsp" class="btn btn-primary" style="margin: 25px 0px;">Position</a>
 </div>
 
 <table id="mytable" class="table" style="background-color:white;">
 	<thead>
-		<tr>
-		<th>ID</th>
-		<th onclick="sortTable(1)">Категорія</th>
-		<th onclick="sortTable(2)">Назва товару</th>
-		<th>Кількість</th>
-		<th>Ціна закупки</th>
-		<th>Ціна продажу</th>
-		<th>Опис</th>
-		<th>Дата</th>
+	<tr>
+		
+		<th onclick="sortTable(2)">Last name</th>
+		<th >First name</th>
+		<th>Middle name</th>
+		<th>Date of birth</th>
+		<th>Phone</th>
+		<th>Date of hire</th>
+		<th>Position</th>
+		
+		
 		<th class="text-center"></th>
 		</tr>
 	</thead>
 	<tbody>
 	<%
-	String con = "jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true";
-	
 	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
     Connection conn = null;
-    conn = DriverManager.getConnection(con);
+    conn = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
     Statement stmt = null;
     stmt = conn.createStatement();
     
-    String query = "select * from ShowProducts";
+   // String query = "select * from ShowEmp";
+    String query = "select * from ShowEmp";
     ResultSet rs = null;
     response.setCharacterEncoding("UTF-8");
     request.setCharacterEncoding("UTF-8");
@@ -69,17 +72,16 @@ table.table th:hover {
 		%>
 
 	<tr>
-	<td><%=rs.getString("ProductID") %></td>
-	<td><%=rs.getString("Category") %></td>
-	<td><%=rs.getString("Product") %></td>
-	<td><%=rs.getString("Amount") %></td>
-	<td><%=rs.getString("PurchasePrice") %></td>
-	<td><%=rs.getString("SellingPrice") %></td>
-	<td><%=rs.getString("Description") %></td>
-	<td><%=rs.getString("ModDate") %></td>
+	<td><%=rs.getString("LastName") %></td>
+	<td><%=rs.getString("FirstName") %></td>
+	<td><%=rs.getString("MiddleName") %></td>
+	<td><%=rs.getString("BirthDate") %></td>
+	<td><%=rs.getString("Phone") %></td>
+	<td><%=rs.getString("HireDate") %></td>
+	<td><%=rs.getString("Position") %></td>	
 	<td style="width: 20%"> 
-	<a href='./Edit/EProducts.jsp?u=<%=rs.getString("ProductID")%>' class="btn btn-warning">Змінити</a>
-	<a href='./Delete/Dproducts.jsp?d=<%=rs.getString("ProductID")%>' onclick="return confirm('Ви впевнені, що хочете видалити товар?');" class="btn btn-danger">Видалити</a>
+	<a href='./Edit/Eemployees.jsp?u=<%=rs.getString("EmployeeID")%>' class="btn btn-warning">Edit</a>
+	<a href='./Delete/Demployees.jsp?d=<%=rs.getString("EmployeeID")%>' onclick="return confirm('Ви впевнені, що хочете видалити цей запис?');" class="btn btn-danger">Delete</a>
 	
 	</td>
 	</tr>

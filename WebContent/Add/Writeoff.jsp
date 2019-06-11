@@ -17,74 +17,84 @@
 <title>Add</title>
 <body>
 <%
-
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 Connection con = null;
 con = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
 Statement stt = con.createStatement();
 ResultSet rss = null;
-rss = stt.executeQuery("select Name From Sales.Products ORDER BY Name") ;
+rss = stt.executeQuery("select ProductCategoryID From Sales.ProductCategory") ;
 
 %>
 <p><br></p>
 <form action="" method="post">
 	<div class="container">
-		<div class="custom-select">
-		<label>Product</label>
-		<select name="item" class="custom-select">
-        <%  while(rss.next()){ %>
-            <option><%= rss.getString(1)%></option>
-        <% } %>
-        </select>
-	</div>
+			<div class="custom-select">
+			<label>Product Category</label>
+					<select name="item" class="custom-select">
+      				  <%  while(rss.next()){ %>
+           				 <option><%= rss.getString(1)%></option>
+       				 <% } 
+      				  
+      				String s=request.getParameter("item");
+                    if (s !=null)
+                    {
+                        out.println("Selected  : "+s);
+                    } 
+                    
+                    con.close();
+       				 %>
+       				</select>
+        
+        	</div>
+        	
+ <%  
+ Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+ Connection con1 = null;
+ con1 = DriverManager.getConnection("jdbc:sqlserver://VENERA;instanceName=MOON;databaseName=Salon;integratedSecurity=true");
+ Statement stt1 = con1.createStatement();
+ ResultSet rss1 = null;
+ rss1 = stt1.executeQuery("select ProductID From Sales.Products WHERE ProductCategoryID='"+s+"'") ;
+ %>
+ 				<div class="custom-select">
+			<label>Product Category</label>
+					<select name="item" class="custom-select">
+      				  <%  while(rss1.next()){ %>
+           				 <option><%= rss1.getString(1)%></option>
+       				 <% } 
+      				  
+      				String ss=request.getParameter("item");
+                    if (ss !=null)
+                    {
+                        out.println("Selected  : "+ss);
+                    }    
+       				 %>
+       				</select>
+        
+        	</div>
+ 
 	
-	<div class="form-group" style="wigth: 80%;">
-		<label>Amount</label>
-		<input type="number" class="form-control" required name="Number" />
-	</div>
-
-	<div class="form-group" style="wigth: 80%;">
-		<label>Description</label>
-		<textarea type="text" class="form-control" name="Description"/></textarea>
-	</div>
 	<button type="submit" class="btn btn-primary"> Ok</button>
 	<a href="../sales" class="btn btn-default">Back</a>
 	</div>
 </form>
-<% 
-                String s=request.getParameter("item");
-                if (s !=null)
-                {
-                    out.println("Selected  : "+s);
-                }
-                
-                
-                
-      %>
-
 </body>
+
 <script>
 var x, i, j, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/
 x = document.getElementsByClassName("custom-select");
 for (i = 0; i < x.length; i++) {
   selElmnt = x[i].getElementsByTagName("select")[0];
-  /*for each element, create a new DIV that will act as the selected item:*/
   a = document.createElement("DIV");
   a.setAttribute("class", "select-selected");
   a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
   x[i].appendChild(a);
-  /*for each element, create a new DIV that will contain the option list:*/
   b = document.createElement("DIV");
   b.setAttribute("class", "select-items select-hide");
   for (j = 1; j < selElmnt.length; j++) {
-    /*for each option in the original select element,
-    create a new DIV that will act as an option item:*/
     c = document.createElement("DIV");
     c.innerHTML = selElmnt.options[j].innerHTML;
     c.addEventListener("click", function(e) {
-        /*when an item is clicked, update the original select box,
-        and the selected item:*/
         var y, i, k, s, h;
         s = this.parentNode.parentNode.getElementsByTagName("select")[0];
         h = this.parentNode.previousSibling;
@@ -106,8 +116,6 @@ for (i = 0; i < x.length; i++) {
   }
   x[i].appendChild(b);
   a.addEventListener("click", function(e) {
-      /*when the select box is clicked, close any other select boxes,
-      and open/close the current select box:*/
       e.stopPropagation();
       closeAllSelect(this);
       this.nextSibling.classList.toggle("select-hide");
@@ -115,8 +123,6 @@ for (i = 0; i < x.length; i++) {
     });
 }
 function closeAllSelect(elmnt) {
-  /*a function that will close all select boxes in the document,
-  except the current select box:*/
   var x, y, i, arrNo = [];
   x = document.getElementsByClassName("select-items");
   y = document.getElementsByClassName("select-selected");
@@ -133,14 +139,11 @@ function closeAllSelect(elmnt) {
     }
   }
 }
-/*if the user clicks anywhere outside the select box,
-then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 </script>
 </html>
 
 <%
-
 String c = request.getParameter("item");
 String d = request.getParameter("Number");
 String e = request.getParameter("Description");
@@ -176,18 +179,6 @@ if (i > 0) {
 	
 }
 } 
-
-
-//{
-//	out.println("<script type=\"text/javascript\">");  
-	//out.println("alert('Sorry, Password or Username Error');");  
-	//out.println("</script>");	
-	
-//}
-
-	
-
-
 
 
 %>

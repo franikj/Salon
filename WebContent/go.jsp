@@ -88,6 +88,7 @@ body {
   <a href="writeoff">Cписання</a>
   <a href="staff">Працівники</a>
   <a href="reports">Звіти</a>
+  <a href="./"> Вийти</a>
   
 </div>
 <div id="bla">

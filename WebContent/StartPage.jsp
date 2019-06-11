@@ -11,20 +11,13 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/dmhendricks/bootstrap-grid-css@4.1.3/dist/css/bootstrap-grid.min.css" />
  
 <%@ include file="go.jsp" %>
+<%@ include file="../Show/Sschedule.jsp" %>
 <head>
 <title>Welcome</title>
 </head>
 
 <body>
 
-<div class="time">
-<script type="text/javascript">
-document.write ('<center> <h2> Сьогодні: <span id="date-time">', new Date().toLocaleString(), '<\/span>.<\/h2></center>')
-if (document.getElementById) onload = function () {
-	setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 50)
-}
-</script>
 
-</div>
 </body>
 </html>
